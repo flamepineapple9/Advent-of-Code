@@ -10,6 +10,14 @@ for(var i = 1; i < 53; i++){
     numLibrary.push(i);
 }
 
+//converts character to it's priority value
+function convert(input){
+    for(var char = 0; char < charLibrary.length; char++){
+        if(input == charLibrary[char]){
+            return(numLibrary[char]);
+        }
+    }
+}
 
 var sum = 0;
 
@@ -32,15 +40,10 @@ for(var i = 0; i < PARSED.length; i++){
             secondHalf.shift();
         }
     }
-    
-    for(var char = 0; char < charLibrary.length; char++){
-        if(duplicate == charLibrary[char]){
-            sum += numLibrary[char];
-        }
-    }
+    sum += convert(duplicate);
 }
-
 console.log(sum);
+
 
 
 //---------- pt2 ----------
@@ -73,12 +76,6 @@ for(var i = 2; i < PARSED.length; i += 3){
         }
     }
     
-    //converts character to it's priority value
-    for(var char = 0; char < charLibrary.length; char++){
-        if(triplicate == charLibrary[char]){
-            sumpt2 += numLibrary[char];
-        }
-    }
+    sumpt2 += convert(triplicate)
 }
-
 console.log(sumpt2);
